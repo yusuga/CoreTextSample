@@ -1,0 +1,6 @@
+iOS 6では、Siriがより多くの言語を理解し、より多くの国で使えるようになるうえ、
+新しいiPadでも利用できるようになります。だから世界中のさらに多くの場所で、さらにたくさんのことができるようになる、というわけです。
+例えばiOS 6では、お気に入りのチームや選手の今日のスコアや最新データなどを知りたい時もSiriにたのめます。
+CFStringTokenizer allows you tokenize strings into words, sentences 
+or paragraphs in a language-neutral way. It supports languages such as Japanese and Chinese that do not delimit words by spaces, as well as de-compounding German compounds.
+You can obtain Latin transcription for tokens. It also provides language identification API

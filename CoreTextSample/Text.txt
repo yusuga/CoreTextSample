@@ -1,0 +1,16 @@
+>日本語と英語が混在
+510万ピクセルを持つRetinaディスプレイ。すべてがフラッシュのアーキテクチャ。クアッドコアのIntel Core i7プロセッサ。そのすべてを、薄さわずか1.8cm、重さ2.02kgのボディに。
+
+>日本語のみ
+日本語行間問題とは、欧文フォントを指定し日本語を描画すると日本語はヒラギノフォントで描画される為、欧文フォントとのアセントとディセント、リーディングの違いから行間が不均等になる問題。
+
+>英語のみ
+Apple’s Industrial Design team tested 124 different prototypes of the EarPods on over 600 people.
+
+> 日本語行間問題のわかりやすい例
+Hello
+World g
+漢字123
+感じ
+abcdefg
+HelloWorld g漢字123感じabcdefg
