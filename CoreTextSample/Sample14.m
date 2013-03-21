@@ -22,13 +22,17 @@
         self.backgroundColor = [[UIColor blueColor] colorWithAlphaComponent:0.4];
         CGFloat fontSize = 50.f;
 
-        self.text = @"ygPGあア唖";
-//        self.text = @"ygPGあア唖\nygPGあア唖";
+//        self.text = @"ygPGあア唖";
+//        self.text = @"gggggg\nあああああああ\nああああああ\nggggggggああああ\nggggggg";
+//        self.text = @"ygPGあア唖\nygPGあア唖\nygPGあア唖";
+//        self.text = @"あいabgj";
+        self.text = @"あいabgj\nあいabgj\nあいabgj";
         
+//        self.ctFont = CTFontCreateWithName(CFSTR("Helvetica"), fontSize, NULL);
         self.ctFont = CTFontCreateWithName(CFSTR("HiraKakuProN-W3"), fontSize, NULL);
 
         NSDictionary *attrDict = [NSDictionary dictionaryWithObjectsAndKeys:
-                                  (__bridge id)self.ctFont, kCTFontAttributeName, //nil];
+                                  (__bridge id)self.ctFont, kCTFontAttributeName,
                                   (__bridge id)self.ctParagraphStyle, kCTParagraphStyleAttributeName, nil];
         
         NSAttributedString *attrStr = [[NSAttributedString alloc] initWithString:self.text attributes:attrDict];
@@ -42,28 +46,31 @@
                                                                           nil);
         CFRelease(framesetter);
         NSLog(@"size[%@]", NSStringFromCGSize(contentSize));
-        
         /* descent1つ分足りない */
-        self.frame = CGRectMake(0.f, 0.f, contentSize.width, contentSize.height);
-        /* 正確な高さ取得 */
+//        self.frame = CGRectMake(0.f, 0.f, contentSize.width, contentSize.height);
+        /* 横幅の解決 widthは切り上げないと末尾の文字が描画されない場合がある */
+//        self.frame = CGRectMake(0.f, 0.f, ceilf(contentSize.width), contentSize.height);
+        /* 高幅の解決 desent分足りない*/
 //        self.frame = CGRectMake(0.f, 0.f, ceilf(contentSize.width), contentSize.height + ceilf(CTFontGetDescent(self.ctFont)));
         
-        CGFloat markWidth = 30.f;
-        CGFloat markViewX = self.bounds.size.width/2.f - markWidth/2.f;
-        UIView *asentView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, 0.f, markWidth, ceilf(CTFontGetAscent(self.ctFont)))];
-        NSLog(@"asView %@", NSStringFromCGRect(asentView.frame));
-        asentView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
-        [self addSubview:asentView];
-        
-        UIView *desentView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, asentView.bounds.size.height, markWidth, ceilf(CTFontGetDescent(self.ctFont)))];
-        NSLog(@"desView %@", NSStringFromCGRect(desentView.frame));
-        desentView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.8f];
-        [self addSubview:desentView];
-        
-        UIView *adjustView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, contentSize.height, markWidth, ceilf(CTFontGetDescent(self.ctFont)))];
-        NSLog(@"adjustView %@", NSStringFromCGRect(adjustView.frame));
-        adjustView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
-        [self addSubview:adjustView];
+        if (1) {
+            CGFloat markWidth = 30.f;
+            CGFloat markViewX = self.bounds.size.width/2.f - markWidth/2.f;
+            UIView *asentView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, 0.f, markWidth, ceilf(CTFontGetAscent(self.ctFont)))];
+            NSLog(@"asView %@", NSStringFromCGRect(asentView.frame));
+            asentView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.3f];
+            [self addSubview:asentView];
+            
+            UIView *desentView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, asentView.bounds.size.height, markWidth, ceilf(CTFontGetDescent(self.ctFont)))];
+            NSLog(@"desView %@", NSStringFromCGRect(desentView.frame));
+            desentView.backgroundColor = [[UIColor yellowColor] colorWithAlphaComponent:0.8f];
+            [self addSubview:desentView];
+            
+            UIView *adjustView = [[UIView alloc] initWithFrame:CGRectMake(markViewX, contentSize.height, markWidth, ceilf(CTFontGetDescent(self.ctFont)))];
+            NSLog(@"adjustView %@", NSStringFromCGRect(adjustView.frame));
+            adjustView.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.6f];
+            [self addSubview:adjustView];
+        }
     }
     return self;
 }
@@ -115,6 +122,7 @@
 
 - (void)drawRect:(CGRect)rect
 {
+    NSLog(@"%@", NSStringFromCGRect(rect));
     NSDictionary *attrDict = [NSDictionary dictionaryWithObjectsAndKeys:
                               (__bridge id)self.ctFont, kCTFontAttributeName,
                               (__bridge id)self.ctParagraphStyle, kCTParagraphStyleAttributeName, nil];
