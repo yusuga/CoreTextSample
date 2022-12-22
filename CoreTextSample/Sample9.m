@@ -53,7 +53,7 @@
         // 行のベースラインpointを取得
         CGPoint origin = *(origins + i);
         // 行からdescentを取得
-        float   descent;
+        CGFloat   descent;
         CTLineGetTypographicBounds(line, nil, &descent, nil);
         // originはベースラインなのでdescentを引けば行の原点(その行の左下端)になる(Core Graphicsの座標系)
         CGContextSetTextPosition(context, origin.x, origin.y - descent);

@@ -79,7 +79,7 @@
         // 行のベースラインpointを取得
         CGPoint origin = *(origins + i);
         // 行の横幅、ascent, descent, leadingを取得
-        float   ascent, descent, leading;
+        CGFloat   ascent, descent, leading;
         double  width;
         width = CTLineGetTypographicBounds(line, &ascent, &descent, &leading);
         // 行のframeを計算
